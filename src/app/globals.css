@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-50: #f4f6f8;
+  --color-ink-100: #e8ecf1;
+  --color-ink-200: #d0d8e2;
+  --color-ink-500: #5b6b7c;
+  --color-ink-700: #2c3a4a;
+  --color-ink-800: #1a2634;
+  --color-ink-900: #0d1520;
+  --color-ink-950: #070c12;
+  --color-gold-400: #d4a84b;
+  --color-gold-500: #c4922e;
+  --color-gold-600: #a67822;
+  --font-sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Georgia", "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-50 text-ink-800 antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
