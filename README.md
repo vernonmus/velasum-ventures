@@ -1,58 +1,32 @@
 # Velasum Ventures Limited
 
-Static corporate website (Next.js `output: "export"`).
+Corporate website for **Velasum Ventures Limited**.
 
 **Repo:** https://github.com/vernonmus/velasum-ventures  
+**Deploy:** [Vercel](https://vercel.com) (import this GitHub repo)
 
-## Deploy on Vercel (recommended)
+## Vercel settings
 
-### One-time setup (dashboard — ~2 minutes)
+| Field | Value |
+|--------|--------|
+| Framework | **Next.js** |
+| Build Command | `npm run build` |
+| Output Directory | **leave empty / default** (do **not** set `out`) |
+| Install Command | `npm install` |
+| Root Directory | `./` |
 
-1. Open **[vercel.com/new](https://vercel.com/new)** and sign in with **GitHub** (`vernonmus`).
-2. **Import** repository: **`vernonmus/velasum-ventures`**.
-3. Leave defaults (or confirm):
+> If a previous attempt set Output Directory to `out`, clear it. That setting caused  
+> `routes-manifest.json couldn't be found` on Vercel.
 
-   | Setting | Value |
-   |---------|--------|
-   | Framework Preset | **Next.js** |
-   | Root Directory | `./` |
-   | Build Command | `npm run build` (default) |
-   | Output Directory | `out` |
-   | Install Command | `npm install` (default) |
+## Custom domain
 
-4. Click **Deploy**.
+1. Vercel → Project → **Settings** → **Domains** → add `www.velasumventures.com`
+2. Cloudflare DNS: CNAME `www` → value Vercel shows (often `cname.vercel-dns.com`), proxy as instructed
 
-You get a URL like `https://velasum-ventures.vercel.app`.
-
-### Custom domain (www.velasumventures.com)
-
-1. Vercel project → **Settings** → **Domains**
-2. Add `www.velasumventures.com` (and optionally `velasumventures.com`)
-3. In **Cloudflare DNS** for the domain, add what Vercel shows, typically:
-
-   | Type | Name | Target | Proxy |
-   |------|------|--------|--------|
-   | CNAME | `www` | `cname.vercel-dns.com` | DNS only (grey) first, or as Vercel instructs |
-
-4. Wait for SSL (usually a few minutes).
-
-### CLI (optional)
-
-```bash
-npm i -g vercel
-vercel login
-cd VelasumVenturesLimited
-vercel --prod
-```
-
-## Local development
+## Local
 
 ```bash
 npm install
 npm run dev
-npm run build   # writes static files to /out
+npm run build
 ```
-
-## Contact form
-
-FormSubmit → `info@velasumventures.com`. First submission may need email confirmation.

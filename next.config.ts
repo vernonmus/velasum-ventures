@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
+/** Standard Next.js for Vercel (static pages, no OpenNext / no forced out/ export). */
 const nextConfig: NextConfig = {
-  output: "export",
-  images: { unoptimized: true },
+  images: {
+    unoptimized: true,
+  },
   trailingSlash: true,
 };
 
