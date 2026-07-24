@@ -1,21 +1,28 @@
 # Velasum Ventures Limited
 
-Corporate website for **Velasum Ventures Limited** — a Zambian investment holding company.
+Static corporate website (Next.js `output: "export"`).
 
-- **Domain:** https://www.velasumventures.com  
-- **Repo:** https://github.com/vernonmus/velasum-ventures  
-- **Stack:** Next.js 15 static export, React 19, Tailwind CSS 4  
-- **Hosting:** Cloudflare Pages
+**Repo:** https://github.com/vernonmus/velasum-ventures  
 
-## Cloudflare Pages settings (required)
+## Critical: Cloudflare Pages must NOT use OpenNext
 
-| Setting | Value |
-|---------|--------|
-| Production branch | `main` |
-| Framework preset | **None** (do not use Next.js SSR preset) |
-| Build command | `npm run build` |
-| Build output directory | `out` |
-| Root directory | *(leave empty)* |
+If the log shows:
+
+```text
+bunx opennextjs-cloudflare build
+```
+
+the project is on the **wrong** framework preset. Change it:
+
+### Settings → Builds & deployments
+
+| Field | Required value |
+|-------|----------------|
+| **Framework preset** | **None** (clear any “Next.js” / OpenNext preset) |
+| **Build command** | `npm run build` |
+| **Build output directory** | `out` |
+| **Root directory** | *(empty)* |
+| **Deploy command** | *(leave empty)* |
 
 ### Environment variables
 
@@ -24,19 +31,32 @@ Corporate website for **Velasum Ventures Limited** — a Zambian investment hold
 | `NODE_VERSION` | `20` |
 | `NPM_CONFIG_PRODUCTION` | `false` |
 
-The second variable ensures build tools (TypeScript, Tailwind) install even when Cloudflare sets production mode.
+Then **Save** and **Retry deployment** / **Create deployment** on branch `main`.
 
-## Local development
+Correct build log should show:
+
+```text
+Executing user build command: npm run build
+...
+▲ Next.js ...
+✓ Compiled successfully
+```
+
+**Wrong** (will fail for this site):
+
+```text
+bunx opennextjs-cloudflare build
+```
+
+## Why
+
+This site is a **static export** (`next.config.ts` → `output: "export"`).  
+`opennextjs-cloudflare` is for full Next.js **server** apps on Workers. It is the wrong tool here.
+
+## Local build
 
 ```bash
 npm install
-npm run dev
+npm run build
+# static files in /out
 ```
-
-```bash
-npm run build   # writes static site to /out
-```
-
-## Contact form
-
-FormSubmit → `info@velasumventures.com`. First submission requires email confirmation.

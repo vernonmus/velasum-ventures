@@ -1,0 +1,4 @@
+# Cloudflare Pages — static HTML export (NOT OpenNext / Workers SSR)
+name = "velasum-ventures"
+compatibility_date = "2025-07-01"
+pages_build_output_dir = "out"

@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npx serve out",
+    "pages:build": "next build",
+    "start": "npx --yes serve out",
     "export": "next build"
   },
   "dependencies": {
