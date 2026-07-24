@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
-/** Standard Next.js for Vercel (static pages, no OpenNext / no forced out/ export). */
+/**
+ * Static HTML export for Vercel.
+ * Deploy as static files from /out — do not use Next.js server runtime settings.
+ */
 const nextConfig: NextConfig = {
-  images: {
-    unoptimized: true,
-  },
+  output: "export",
+  images: { unoptimized: true },
   trailingSlash: true,
 };
 

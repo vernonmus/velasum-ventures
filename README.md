@@ -1,32 +1,24 @@
 # Velasum Ventures Limited
 
-Corporate website for **Velasum Ventures Limited**.
+Static corporate website (Next.js `output: "export"` → folder **`out`**).
 
-**Repo:** https://github.com/vernonmus/velasum-ventures  
-**Deploy:** [Vercel](https://vercel.com) (import this GitHub repo)
+**Repo:** https://github.com/vernonmus/velasum-ventures
 
-## Vercel settings
+## Vercel settings (important)
 
 | Field | Value |
 |--------|--------|
-| Framework | **Next.js** |
+| Framework Preset | **Other** (not Next.js) |
 | Build Command | `npm run build` |
-| Output Directory | **leave empty / default** (do **not** set `out`) |
+| **Output Directory** | **`out`** |
 | Install Command | `npm install` |
-| Root Directory | `./` |
 
-> If a previous attempt set Output Directory to `out`, clear it. That setting caused  
-> `routes-manifest.json couldn't be found` on Vercel.
+`vercel.json` already sets `framework: null` and `outputDirectory: "out"`.
 
-## Custom domain
+**Why not Framework = Next.js?**  
+That mode expects a server build (`.next` / `routes-manifest.json`). This site is a pure static export into `out`.
 
-1. Vercel → Project → **Settings** → **Domains** → add `www.velasumventures.com`
-2. Cloudflare DNS: CNAME `www` → value Vercel shows (often `cname.vercel-dns.com`), proxy as instructed
+## Domain
 
-## Local
-
-```bash
-npm install
-npm run dev
-npm run build
-```
+Vercel → Domains → add `www.velasumventures.com`  
+Cloudflare DNS → CNAME `www` → value Vercel provides
